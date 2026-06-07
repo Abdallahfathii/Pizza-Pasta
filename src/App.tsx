@@ -40,79 +40,54 @@ function App() {
       <header className="relative min-h-screen flex flex-col items-center justify-center px-4 py-12">
         {/* Floating decorations - Right Side */}
 
-        <motion.div
-          className="absolute top-16 right-2 text-flag-red/30 opacity-70"
-          animate={{ y: [0, 15, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 6, repeat: Infinity }}
-        >
-          <img
-            src="/pizza2.webp"
-            alt="pizza"
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
-          />
-        </motion.div>
+       <motion.div
+  className="absolute top-16 right-2 opacity-70"
+  animate={{ y: [0, 15, 0], rotate: [0, -15, 0] }}
+  transition={{ duration: 6, repeat: Infinity }}
+>
+  <img src="/pizza2.webp" alt="pizza" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+</motion.div>
 
-        <motion.div
-          className="absolute bottom-62 right-2 text-flag-red/20 opacity-70"
-          animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 7, repeat: Infinity }}
-        >
-          <img
-            src="/slice.png"
-            alt="slice"
-            className="w-14 h-14 sm:w-18 sm:h-18 object-contain"
-          />
-        </motion.div>
+<motion.div
+  className="absolute top-1/2 -translate-y-1/2 right-2 opacity-70"
+  animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
+  transition={{ duration: 7, repeat: Infinity }}
+>
+  <img src="/slice.png" alt="slice" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+</motion.div>
 
-        <motion.div
-          className="absolute bottom-8 right-2 text-flag-red/20 opacity-70"
-          animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 7, repeat: Infinity }}
-        >
-          <img
-            src="/Pizza3.Png"
-            alt="pizza3"
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
-          />
-        </motion.div>
+<motion.div
+  className="absolute bottom-16 right-2 opacity-70"
+  animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
+  transition={{ duration: 7, repeat: Infinity }}
+>
+  <img src="/Pizza3.Png" alt="pizza3" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+</motion.div>
 
-        {/* Floating decorations - Left Side */}
+{/* Left Side - 3 صور متوازية */}
+<motion.div
+  className="absolute top-16 left-2 opacity-70"
+  animate={{ y: [0, -15, 0], rotate: [0, 15, 0] }}
+  transition={{ duration: 5, repeat: Infinity }}
+>
+  <img src="/pasta2.png" alt="pasta2" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+</motion.div>
 
-        <motion.div
-          className="absolute top-20 left-2 text-flag-green/30 opacity-70"
-          animate={{ y: [0, -15, 0], rotate: [0, 15, 0] }}
-          transition={{ duration: 5, repeat: Infinity }}
-        >
-          <img
-            src="/pasta2.png"
-            alt="pasta2"
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
-          />
-        </motion.div>
+<motion.div
+  className="absolute top-1/2 -translate-y-1/2 left-2 opacity-80"
+  animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }}
+  transition={{ duration: 4, repeat: Infinity }}
+>
+  <img src="/fork.png" alt="fork" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+</motion.div>
 
-        <motion.div
-          className="absolute bottom-8 left-2 text-flag-green/20 opacity-80"
-          animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
-          <img
-            src="/pasta1.png"
-            alt="pasta1"
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
-          />
-        </motion.div>
-
-        <motion.div
-          className="absolute top-1/2 left-2 -translate-y-1/2 text-flag-red/30 opacity-60"
-          animate={{ y: [0, 15, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 6, repeat: Infinity }}
-        >
-          <img
-            src="/fork.png"
-            alt="fork"
-            className="w-14 h-14 sm:w-18 sm:h-18 object-contain"
-          />
-        </motion.div>
+<motion.div
+  className="absolute bottom-16 left-2 opacity-80"
+  animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }}
+  transition={{ duration: 4, repeat: Infinity }}
+>
+  <img src="/pasta1.png" alt="pasta1" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+</motion.div>
 
         {/* P&P Logo */}
         <PPLogo />
@@ -133,7 +108,7 @@ function App() {
             {/* منحنى لفوق - الجانبان ينزلان والوسط يرتفع */}
             <path
               id="curveUp"
-              d="M 10,50 Q 160,5 310,50"
+              d="M 310,50 Q 160,5 10,50"
               fill="none"
             />
             <text
