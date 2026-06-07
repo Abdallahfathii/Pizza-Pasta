@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-cairo: 'Cairo', sans-serif;
+  --color-flag-green: #008C45;
+  --color-flag-green-dark: #006B35;
+  --color-flag-white: #FFFFFF;
+  --color-flag-red: #CD212A;
+  --color-flag-red-dark: #A81A22;
+  --color-gold: #D4AF37;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer-bg {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.ribbon-hero {
+  clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%);
+}
+
+.menu-item-green {
+  background: linear-gradient(135deg, rgba(0,140,69,0.95), rgba(0,107,53,0.98));
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.menu-item-white {
+  background: rgba(255,255,255,0.97);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.menu-item-red {
+  background: linear-gradient(135deg, rgba(205,33,42,0.95), rgba(168,26,34,0.98));
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.price-badge-l {
+  background: linear-gradient(135deg, #D4AF37, #F4E4A6, #D4AF37);
+  color: #1a1a1a;
+}
+
+.price-badge-m {
+  background: linear-gradient(135deg, #C0C0C0, #C0C0C0, #C0C0C0);
+  color: #1a1a1a;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
