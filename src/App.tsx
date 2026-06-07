@@ -9,168 +9,101 @@ import { menuCategories } from "./data/menu";
 
 const ItalianFrame = () => (
   <div className="fixed inset-0 pointer-events-none z-40">
-    <div
-      className="absolute inset-2 rounded-sm"
-      style={{
-        background: "transparent",
-        boxShadow: `
-          0 0 0 3px #009246,
-          0 0 0 6px #ffffff,
-          0 0 0 9px #ce2b37,
-          0 0 0 11px #d4af37,
-          0 0 0 13px #ce2b37
-        `,
-      }}
-    />
-
-   
-
-    {/* {(["top-3 left-14 right-14", "bottom-3 left-14 right-14"] as string[]).map((pos, i) => (
-      <div
-        key={i}
-        className={`absolute ${pos} h-0.5`}
-        style={{
-          background: "linear-gradient(90deg, #009246, #ffffff, #ce2b37)",
-          opacity: 0.8,
-        }}
-      />
-    ))} */}
-
-    {/* خطوط زخرفية يميني ويساري */}
-    {/* {(["left-3 top-14 bottom-14", "right-3 top-14 bottom-14"] as string[]).map((pos, i) => (
-      <div
-        key={i}
-        className={`absolute ${pos} w-0.5`}
-        style={{
-          background: "linear-gradient(180deg, #009246, #ffffff, #ce2b37)",
-          opacity: 0.8,
-        }}
-      />
-    ))} */}
+    <div className="absolute top-0 left-0 right-0 flex flex-col">
+      <div className="h-2 bg-[#009246]" />
+      <div className="h-2 bg-white" />
+      <div className="h-2 bg-[#ce2b37]" />
+    </div>
+    <div className="absolute bottom-0 left-0 right-0 flex flex-col">
+      <div className="h-2 bg-[#009246]" />
+      <div className="h-2 bg-white" />
+      <div className="h-2 bg-[#ce2b37]" />
+    </div>
+    <div className="absolute top-0 bottom-0 right-0 flex flex-row">
+      <div className="w-2 bg-[#009246]" />
+      <div className="w-2 bg-white" />
+      <div className="w-2 bg-[#ce2b37]" />
+    </div>
+    <div className="absolute top-0 bottom-0 left-0 flex flex-row">
+      <div className="w-2 bg-[#009246]" />
+      <div className="w-2 bg-white" />
+      <div className="w-2 bg-[#ce2b37]" />
+    </div>
   </div>
 );
 
+type TabId = "all" | "pasta" | "pizza" | "burger" | "extras";
+
+const tabs: { id: TabId; label: string }[] = [
+  { id: "all", label: "الكل" },
+  { id: "pasta", label: "باستا" },
+  { id: "pizza", label: "بيتزا" },
+  { id: "burger", label: "برجر" },
+  { id: "extras", label: "إضافات" },
+];
+
 function App() {
-  const [activeTab, setActiveTab] = useState<"all" | "pasta" | "pizza">("all");
+  const [activeTab, setActiveTab] = useState<TabId>("all");
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
+    const handleScroll = () => setShowScrollTop(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const filteredCategories = menuCategories.filter((cat) => {
     if (activeTab === "all") return true;
     if (activeTab === "pasta") return cat.id === "pasta";
-    if (activeTab === "pizza")
-      return cat.id === "pizza-special" || cat.id === "pizza-classic";
+    if (activeTab === "pizza") return cat.id === "pizza-special" || cat.id === "pizza-classic";
+    if (activeTab === "burger") return cat.id === "chicken-burger" || cat.id === "beef-burger";
+    if (activeTab === "extras") return cat.id === "appetizers" || cat.id === "mac-cheese" || cat.id === "loaded-fries" || cat.id === "sides";
     return true;
   });
 
   return (
     <div className="min-h-screen font-cairo relative" dir="rtl">
-
-      {/* Italian Decorative Frame */}
       <ItalianFrame />
-
-      {/* Three-Column Italian Flag Background */}
       <FlagBackground />
 
       {/* Hero Section */}
       <header className="relative min-h-screen flex flex-col items-center justify-center px-4 py-12">
 
-        {/* Right Side - 3 صور متوازية */}
-        <motion.div
-          className="absolute top-16 right-2 opacity-70"
-          animate={{ y: [0, 15, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 6, repeat: Infinity }}
-        >
+        {/* Right Side */}
+        <motion.div className="absolute top-16 right-2 opacity-70" animate={{ y: [0, 15, 0], rotate: [0, -15, 0] }} transition={{ duration: 6, repeat: Infinity }}>
           <img src="/pizza2.webp" alt="pizza" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
         </motion.div>
-
-        <motion.div
-          className="absolute top-1/2 -translate-y-1/2 right-2 opacity-70"
-          animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 7, repeat: Infinity }}
-        >
+        <motion.div className="absolute top-1/2 -translate-y-1/2 right-2 opacity-70" animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }} transition={{ duration: 7, repeat: Infinity }}>
           <img src="/slice.png" alt="slice" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
         </motion.div>
-
-        <motion.div
-          className="absolute bottom-16 right-2 opacity-70"
-          animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 7, repeat: Infinity }}
-        >
+        <motion.div className="absolute bottom-16 right-2 opacity-70" animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }} transition={{ duration: 7, repeat: Infinity }}>
           <img src="/Pizza3.Png" alt="pizza3" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
         </motion.div>
 
-        {/* Left Side - 3 صور متوازية */}
-        <motion.div
-          className="absolute top-16 left-2 opacity-70"
-          animate={{ y: [0, -15, 0], rotate: [0, 15, 0] }}
-          transition={{ duration: 5, repeat: Infinity }}
-        >
+        {/* Left Side */}
+        <motion.div className="absolute top-16 left-2 opacity-70" animate={{ y: [0, -15, 0], rotate: [0, 15, 0] }} transition={{ duration: 5, repeat: Infinity }}>
           <img src="/pasta2.png" alt="pasta2" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
         </motion.div>
-
-        <motion.div
-          className="absolute top-1/2 -translate-y-1/2 left-2 opacity-80"
-          animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
+        <motion.div className="absolute top-1/2 -translate-y-1/2 left-2 opacity-80" animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }} transition={{ duration: 4, repeat: Infinity }}>
           <img src="/fork.png" alt="fork" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
         </motion.div>
-
-        <motion.div
-          className="absolute bottom-16 left-2 opacity-80"
-          animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
+        <motion.div className="absolute bottom-16 left-2 opacity-80" animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }} transition={{ duration: 4, repeat: Infinity }}>
           <img src="/pasta1.png" alt="pasta1" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
         </motion.div>
 
-        {/* P&P Logo */}
         <PPLogo />
 
-        {/* Curved Tagline */}
-        <motion.div
-          className="mt-4 flex justify-center w-full px-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
-          <p
-            className="text-gray-800 text-sm font-bold text-center"
-            style={{
-              background: "transparent",
-              borderRadius: "0 0 50% 50% / 0 0 30px 30px",
-              padding: "0 10px 8px",
-              transform: "perspective(200px) rotateX(-8deg)",
-            }}
-          >
+        <motion.div className="mt-4 flex justify-center w-full px-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.6 }}>
+          <p className="text-gray-800 text-sm font-bold text-center" style={{ transform: "perspective(200px) rotateX(-8deg)" }}>
             اول مطعم فى مدينة السادات بطعم وريحة ايطاليا
           </p>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
+        <motion.div className="absolute bottom-6 left-1/2 -translate-x-1/2" animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}>
           <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-2">
-            <motion.div
-              className="w-1.5 h-1.5 bg-gray-500 rounded-full"
-              animate={{ y: [0, 10, 0], opacity: [1, 0.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+            <motion.div className="w-1.5 h-1.5 bg-gray-500 rounded-full" animate={{ y: [0, 10, 0], opacity: [1, 0.3, 1] }} transition={{ duration: 2, repeat: Infinity }} />
           </div>
         </motion.div>
       </header>
@@ -178,25 +111,14 @@ function App() {
       {/* Menu Section */}
       <main className="relative px-4 md:px-8 pb-8 max-w-4xl mx-auto">
         {/* Tab Navigation */}
-        <motion.div
-          className="sticky top-3 z-30 flex justify-center mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <div className="inline-flex bg-white/90 backdrop-blur-xl rounded-full p-1.5 shadow-lg border border-gray-200">
-            {[
-              { id: "all" as const, label: "الكل" },
-              { id: "pasta" as const, label: "باستا" },
-              { id: "pizza" as const, label: "بيتزا" },
-            ].map((tab) => (
+        <motion.div className="sticky top-3 z-30 flex justify-center mb-8" initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <div className="inline-flex bg-white/90 backdrop-blur-xl rounded-full p-1.5 shadow-lg border border-gray-200 gap-0.5 flex-wrap justify-center">
+            {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative px-6 py-2.5 rounded-full text-sm font-black transition-all duration-300 ${
-                  activeTab === tab.id
-                    ? "text-white"
-                    : "text-gray-600 hover:text-gray-900"
+                className={`relative px-4 py-2 rounded-full text-xs font-black transition-all duration-300 ${
+                  activeTab === tab.id ? "text-white" : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 {activeTab === tab.id && (
@@ -212,7 +134,6 @@ function App() {
           </div>
         </motion.div>
 
-        {/* Menu Content */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -228,10 +149,8 @@ function App() {
         </AnimatePresence>
       </main>
 
-      {/* Contact Section */}
       <ContactSection />
 
-      {/* Footer */}
       <footer className="relative bg-gray-900 text-white py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex justify-center gap-1 mb-4">
@@ -239,14 +158,11 @@ function App() {
             <div className="w-8 h-1 rounded-full bg-white" />
             <div className="w-8 h-1 rounded-full bg-flag-red" />
           </div>
-          <p className="text-white/60 text-sm font-bold">
-            P&P Pizza and Pasta &copy; {new Date().getFullYear()}
-          </p>
+          <p className="text-white/60 text-sm font-bold">P&P Pizza and Pasta &copy; {new Date().getFullYear()}</p>
           <p className="text-white/40 text-xs mt-1">جميع الحقوق محفوظة</p>
         </div>
       </footer>
 
-      {/* Scroll to top button */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button

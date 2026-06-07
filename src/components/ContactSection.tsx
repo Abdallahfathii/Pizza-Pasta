@@ -119,7 +119,7 @@ export default function ContactSection() {
             rel="noopener noreferrer"
             className="mt-3 block text-center text-sm font-bold text-flag-green hover:text-flag-green-dark transition-colors"
           >
-            فتح الخريطة في تبوع جديد &rarr;
+            فتح الخريطة للوصول&rarr;
           </a>
         </motion.div>
       </div>
