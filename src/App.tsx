@@ -7,6 +7,49 @@ import MenuSection from "./components/MenuSection";
 import ContactSection from "./components/ContactSection";
 import { menuCategories } from "./data/menu";
 
+const ItalianFrame = () => (
+  <div className="fixed inset-0 pointer-events-none z-40">
+    <div
+      className="absolute inset-2 rounded-sm"
+      style={{
+        background: "transparent",
+        boxShadow: `
+          0 0 0 3px #009246,
+          0 0 0 6px #ffffff,
+          0 0 0 9px #ce2b37,
+          0 0 0 11px #d4af37,
+          0 0 0 13px #ce2b37
+        `,
+      }}
+    />
+
+   
+
+    {/* {(["top-3 left-14 right-14", "bottom-3 left-14 right-14"] as string[]).map((pos, i) => (
+      <div
+        key={i}
+        className={`absolute ${pos} h-0.5`}
+        style={{
+          background: "linear-gradient(90deg, #009246, #ffffff, #ce2b37)",
+          opacity: 0.8,
+        }}
+      />
+    ))} */}
+
+    {/* خطوط زخرفية يميني ويساري */}
+    {/* {(["left-3 top-14 bottom-14", "right-3 top-14 bottom-14"] as string[]).map((pos, i) => (
+      <div
+        key={i}
+        className={`absolute ${pos} w-0.5`}
+        style={{
+          background: "linear-gradient(180deg, #009246, #ffffff, #ce2b37)",
+          opacity: 0.8,
+        }}
+      />
+    ))} */}
+  </div>
+);
+
 function App() {
   const [activeTab, setActiveTab] = useState<"all" | "pasta" | "pizza">("all");
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -33,85 +76,88 @@ function App() {
 
   return (
     <div className="min-h-screen font-cairo relative" dir="rtl">
+
+      {/* Italian Decorative Frame */}
+      <ItalianFrame />
+
       {/* Three-Column Italian Flag Background */}
       <FlagBackground />
 
       {/* Hero Section */}
       <header className="relative min-h-screen flex flex-col items-center justify-center px-4 py-12">
-        {/* Floating decorations - Right Side */}
 
-       <motion.div
-  className="absolute top-16 right-2 opacity-70"
-  animate={{ y: [0, 15, 0], rotate: [0, -15, 0] }}
-  transition={{ duration: 6, repeat: Infinity }}
->
-  <img src="/pizza2.webp" alt="pizza" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
-</motion.div>
+        {/* Right Side - 3 صور متوازية */}
+        <motion.div
+          className="absolute top-16 right-2 opacity-70"
+          animate={{ y: [0, 15, 0], rotate: [0, -15, 0] }}
+          transition={{ duration: 6, repeat: Infinity }}
+        >
+          <img src="/pizza2.webp" alt="pizza" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+        </motion.div>
 
-<motion.div
-  className="absolute top-1/2 -translate-y-1/2 right-2 opacity-70"
-  animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
-  transition={{ duration: 7, repeat: Infinity }}
->
-  <img src="/slice.png" alt="slice" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
-</motion.div>
+        <motion.div
+          className="absolute top-1/2 -translate-y-1/2 right-2 opacity-70"
+          animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
+          transition={{ duration: 7, repeat: Infinity }}
+        >
+          <img src="/slice.png" alt="slice" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+        </motion.div>
 
-<motion.div
-  className="absolute bottom-16 right-2 opacity-70"
-  animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
-  transition={{ duration: 7, repeat: Infinity }}
->
-  <img src="/Pizza3.Png" alt="pizza3" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
-</motion.div>
+        <motion.div
+          className="absolute bottom-16 right-2 opacity-70"
+          animate={{ y: [0, 12, 0], rotate: [0, -15, 0] }}
+          transition={{ duration: 7, repeat: Infinity }}
+        >
+          <img src="/Pizza3.Png" alt="pizza3" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+        </motion.div>
 
-{/* Left Side - 3 صور متوازية */}
-<motion.div
-  className="absolute top-16 left-2 opacity-70"
-  animate={{ y: [0, -15, 0], rotate: [0, 15, 0] }}
-  transition={{ duration: 5, repeat: Infinity }}
->
-  <img src="/pasta2.png" alt="pasta2" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
-</motion.div>
+        {/* Left Side - 3 صور متوازية */}
+        <motion.div
+          className="absolute top-16 left-2 opacity-70"
+          animate={{ y: [0, -15, 0], rotate: [0, 15, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        >
+          <img src="/pasta2.png" alt="pasta2" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+        </motion.div>
 
-<motion.div
-  className="absolute top-1/2 -translate-y-1/2 left-2 opacity-80"
-  animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }}
-  transition={{ duration: 4, repeat: Infinity }}
->
-  <img src="/fork.png" alt="fork" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
-</motion.div>
+        <motion.div
+          className="absolute top-1/2 -translate-y-1/2 left-2 opacity-80"
+          animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          <img src="/fork.png" alt="fork" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+        </motion.div>
 
-<motion.div
-  className="absolute bottom-16 left-2 opacity-80"
-  animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }}
-  transition={{ duration: 4, repeat: Infinity }}
->
-  <img src="/pasta1.png" alt="pasta1" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
-</motion.div>
+        <motion.div
+          className="absolute bottom-16 left-2 opacity-80"
+          animate={{ y: [0, -12, 0], rotate: [0, -15, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          <img src="/pasta1.png" alt="pasta1" className="w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+        </motion.div>
 
         {/* P&P Logo */}
         <PPLogo />
 
         {/* Curved Tagline */}
-       <motion.div
-  className="mt-4 flex justify-center w-full px-8"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 0.8, duration: 0.6 }}
->
-  <p
-    className="text-gray-800 text-sm font-bold text-center"
-    style={{
-      background: "transparent",
-      borderRadius: "0 0 50% 50% / 0 0 30px 30px",
-      padding: "0 10px 8px",
-      borderBottom: "2px solid transparent",
-      transform: "perspective(200px) rotateX(-8deg)",
-    }}
-  >
-    اول مطعم فى مدينة السادات بطعم وريحة ايطاليا
-  </p>
-</motion.div>
+        <motion.div
+          className="mt-4 flex justify-center w-full px-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+        >
+          <p
+            className="text-gray-800 text-sm font-bold text-center"
+            style={{
+              background: "transparent",
+              borderRadius: "0 0 50% 50% / 0 0 30px 30px",
+              padding: "0 10px 8px",
+              transform: "perspective(200px) rotateX(-8deg)",
+            }}
+          >
+            اول مطعم فى مدينة السادات بطعم وريحة ايطاليا
+          </p>
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
@@ -188,13 +234,11 @@ function App() {
       {/* Footer */}
       <footer className="relative bg-gray-900 text-white py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Italian flag colors divider */}
           <div className="flex justify-center gap-1 mb-4">
             <div className="w-8 h-1 rounded-full bg-flag-green" />
             <div className="w-8 h-1 rounded-full bg-white" />
             <div className="w-8 h-1 rounded-full bg-flag-red" />
           </div>
-
           <p className="text-white/60 text-sm font-bold">
             P&P Pizza and Pasta &copy; {new Date().getFullYear()}
           </p>
