@@ -93,37 +93,25 @@ function App() {
         <PPLogo />
 
         {/* Curved Tagline */}
-        <motion.div
-          className="mt-2 flex justify-center w-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
-          <svg
-            viewBox="0 0 320 60"
-            width="100%"
-            style={{ maxWidth: "320px" }}
-            height="60"
-          >
-            {/* منحنى لفوق - الجانبان ينزلان والوسط يرتفع */}
-            <path
-              id="curveUp"
-              d="M 310,50 Q 160,5 10,50"
-              fill="none"
-            />
-            <text
-              fontFamily="Cairo, sans-serif"
-              fontSize="13"
-              fontWeight="bold"
-              fill="#1f2937"
-              textAnchor="middle"
-            >
-              <textPath href="#curveUp" startOffset="50%">
-                اول مطعم فى مدينة السادات بطعم وريحة ايطاليا
-              </textPath>
-            </text>
-          </svg>
-        </motion.div>
+       <motion.div
+  className="mt-4 flex justify-center w-full px-8"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.8, duration: 0.6 }}
+>
+  <p
+    className="text-gray-800 text-sm font-bold text-center"
+    style={{
+      background: "transparent",
+      borderRadius: "0 0 50% 50% / 0 0 30px 30px",
+      padding: "0 10px 8px",
+      borderBottom: "2px solid transparent",
+      transform: "perspective(200px) rotateX(-8deg)",
+    }}
+  >
+    اول مطعم فى مدينة السادات بطعم وريحة ايطاليا
+  </p>
+</motion.div>
 
         {/* Scroll indicator */}
         <motion.div
