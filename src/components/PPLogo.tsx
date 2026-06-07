@@ -11,7 +11,7 @@ export default function PPLogo() {
       <motion.img
         src="/logo.jpg"
         alt="P&P Pizza and Pasta"
-        className="w-40 md:w-50 lg:w-50 mx-40 h-auto object-contain"
+        className="w-30 md:w-30 lg:w-30 mx-auto h-auto object-contain"
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
       />
